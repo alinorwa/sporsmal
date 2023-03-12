@@ -8,7 +8,7 @@
     
   },
   "keywords": [],
-  "author": "",
+  "author": "ali",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
