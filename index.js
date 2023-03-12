@@ -39,14 +39,16 @@ app.get('/', (req, res) => {
   .then(count => {
         const randomIndex = Math.floor(Math.random() * count);
         
-        Sporsmal.find({}, { _id: 0 }).limit(1).skip(randomIndex).then(doc => {
+        Sporsmal.find({}, { _id: 0 }).limit(1).skip(randomIndex)
+        .then(doc => {
           if (!doc) {
             console.error('No document found');
             res.status(404).send('No document found');
             return;
           }
           res.render('index', { data: doc[0] });
-        }).catch(err => {
+        })
+        .catch(err => {
           console.error('Error finding document:', err);
           res.status(500).send('Error finding document');
         });
@@ -56,6 +58,12 @@ app.get('/', (req, res) => {
     res.status(500).send('Error counting documents');
   });
 });
+
+
+
+
+
+
 
 
 // get random list og question in post.html
