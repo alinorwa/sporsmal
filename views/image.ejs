@@ -8,6 +8,8 @@
 </head>
 <body>
     <h1>Image Upload</h1>
+    <a href="/">home</a>
+    <br><br>
     <form action="/upload" method="POST" enctype="multipart/form-data">
       <div>
         <label for="title">Title:</label>
@@ -23,14 +25,14 @@
     <hr>
     <h1>Image Gallery test</h1>
     <% if (images.length > 0) { %>
-      <% images.forEach(function(image) { %>
-        <div>
-          <h3>Title: <%= image.title %></h3>
-          <img src="data:image/jpeg;base64,<%= image.image.toString('base64') %>" alt="Image">
-        </div>
-      <% }); %>
+        <% images.forEach(function(image) { %>
+          <div>
+            <h3>Title: <%= image.title %></h3>
+            <img src="data:image/jpeg;base64,<%= image.image.toString('base64') %>" alt="Image">
+          </div>
+        <% }); %>
     <% } else { %>
-      <p>No images found.</p>
+           <p>No images found.</p>
     <% } %>
     
 </body>

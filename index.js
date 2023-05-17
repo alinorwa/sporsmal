@@ -36,6 +36,7 @@ mongoose.connect(mongodb)
 
 // get the index page and send the random Question data to there 
 app.get('/', (req,res) => {
+  
     Question.countDocuments()
     .then(count => {
         const randomIndex = Math.floor(Math.random() * count)
@@ -46,7 +47,8 @@ app.get('/', (req,res) => {
                     res.status(404).send('No document found')
                     return
                 }
-                res.render('index' , { data : doc[0]})
+            
+                res.render('index' , { data : doc[0] })
             })
             .catch(error => {
                 console.error('Error finding document : ' , error)
@@ -57,8 +59,10 @@ app.get('/', (req,res) => {
         console.error('Error counting documents:', err);
         res.status(500).send('Error counting documents');
     })
-
+   
 })
+
+
 
 // data to post the answer and take tge ask random
 app.post('/data' , async(req ,res) => {
@@ -84,10 +88,10 @@ app.get('/all', async (req ,res) => {
 
 // get random list og question ============================ start admin_questions.ejs
 app.get('/alipostnorway' , async (req,res) => {
-    const questions = await Question.find();
-    const count_questions =  questions.length;
-    res.render('admin_questions', { questions  , count_questions});
-   
+  
+      const questions = await Question.find();
+      const count_questions =  questions.length; 
+    res.render('admin_questions', { questions  , count_questions });
   })
   
   // create the question  
