@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+
+    <link rel="shortcut icon" href="/img/ali.png" type="image/png" />
+    <title>admin questions</title>
+  </head>
+  <body class="bg-dark text-white">
+    <div class="container">
+      <!-- Reload button -->
+      <div class="mt-4">
+        <button
+          type="button"
+          class="btn btn btn-outline-light"
+          onclick="location.reload()"
+        >
+          Reload the Page
+        </button>
+        <a href="/" class="btn btn-outline-light">home</a>
+      </div>
+
+      <!-- start header --------------- -->
+
+      <div class="py-5">
+        <div class="row g-0">
+          <div class="col-md-8">
+            <!-- start Add form -->
+            <form action="/add" method="POST">
+              <div class="mb-3">
+                <h3 for="exampleInputPassword1" class="form-label text-center">
+                  Write a Question
+                </h3>
+
+                <textarea
+                  id="floatingInput"
+                  class="form-control"
+                  name="question"
+                  id=""
+                  cols="20"
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-outline-info">
+                  Create a question
+                </button>
+              </div>
+            </form>
+
+            <!-- end Add form -->
+          </div>
+          <div class="col-md-4">
+            <div class="card-body">
+              <h1 class="text-center">Todo List : <%= count_questions %></h1>
+
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- header  header --------------- -->
+
+      <hr />
+
+      <!-- Display questions -->
+      <div class="row">
+        <% if (questions.length > 0) { %> <% questions.forEach(question => { %>
+        <div class="col-md-6">
+          <div class="card mb-3" style="background-color: #2d2a3a">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <%= question.question %>
+                <!-- start delete  -->
+                <form
+                  action="/delete/<%= question._id %>"
+                  method="POST"
+                  class="my-3"
+                >
+                  <button type="submit" class="btn btn-outline-danger">
+                    Delete
+                  </button>
+                </form>
+                <!-- start delete  -->
+              </div>
+              <!-- start update  -->
+
+              <form action="/update/<%= question._id %>" method="POST">
+                <div class="form-group">
+                  <textarea
+                    class="form-control"
+                    name="question"
+                    id=""
+                    cols="20"
+                    rows="2"
+                    required
+                  ></textarea>
+                </div>
+                <!-- <div class="d-grid gap-2"> -->
+                <button type="submit" class="btn btn-outline-warning mt-1">
+                  Update a question
+                </button>
+                <!-- </div> -->
+              </form>
+
+              <!-- end update  -->
+            </div>
+          </div>
+        </div>
+        <% }) %> <% } else { %>
+        <p>No questions yet.</p>
+        <% } %>
+      </div>
+      <br />
+      <footer class="m-5 pt-5 text-white fw-light opacity-25">
+        <small> &copy; alialrubay499@gmail.com , 2023</small>
+      </footer>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

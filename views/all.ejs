@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="/img/ali.png" type="image/png" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>alle spørsmål og svar</title>
+  </head>
+  <body>
+    <div class="container">
+      <br />
+      <h1 class="text-center text-white">Alle Din Svar Er Her</h1>
+      <a href="/" class="btn btn-outline-info mt-4 button-ali"> Tilbake</a>
+      <p class="text-white mt-3">svar : <%= count%></p>
+      <br />
+      <hr class="border border-light border-1 opacity-50" />
+
+      <% if (askAndTheAnswer.length > 0) { %> <% askAndTheAnswer.forEach((a ,
+      index) => { %>
+      <div>
+        <p class="alert ask-ali text-white">
+          <small class=""><%= index + 1 %></small>
+          - <%= a.ask%>
+        </p>
+
+        <p
+          style="padding-left: 20px"
+          class="alert btn-ali bg-secondary bg-gradient text-white"
+        >
+          <%= a.answer%>
+        </p>
+      </div>
+      <% }) %> <% } else { %>
+      <p class="text-white">No Ask found</p>
+      <% } %>
+      <br />
+      <footer class="m-5 pt-5 text-white fw-light opacity-25">
+        <small> &copy; alialrubay499@gmail.com , 2023</small>
+      </footer>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+body{
+    background-color: #34394b;
+}
+.btn-ali{
+    
+    /* border-radius: 45px; */
+    background: linear-gradient(145deg, #2f3344, #383d50);
+    box-shadow:  5px 5px 6px #15171e,
+                -5px -5px 6px #535b78;
+}
+
+
+.button-ali{
+   width: 250px;
+
+    border-radius: 26px;
+    background: #34394b;
+    box-shadow:  12px 12px 24px #1f222c,
+                 -12px -12px 24px #49506a;
+}
+.ask-ali{
+    /* border-radius: 26px; */
+    background: #34394b;
+    box-shadow:  12px 12px 24px #1f222c,
+                 -12px -12px 24px #49506a;
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="/img/ali.png" type="image/png" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Hjem</title>
+  </head>
+  <body class="">
+    <div class="container px-5">
+      <div class="row mb-5">
+        <div class="col-lg-12">
+          <a href="/all" class="btn btn-outline-info mt-4 button-ali"
+            >Alle spørsmål og svar</a
+          >
+        </div>
+        <!---- end navbar col  --->
+        <div class="col-lg-12">
+          <!-- start data  -->
+          <div
+            class="text-primary-emphasis text-center mb-2"
+            style="margin-top: 130px !important"
+          >
+            <% if (data) { %>
+            <h1 id="ask" class="text-white mb-3"><%= data.question %> ?</h1>
+            <button
+              onclick="reloadPage()"
+              class="btn btn-outline-warning button-ali"
+            >
+              endre spørsmålet
+            </button>
+            <% } else { %>
+            <p class="text-white">Det er ingen spørsmål nå</p>
+            <% } %>
+          </div>
+          <!-- end data  -->
+        </div>
+        <!-- start text form  -->
+        <div class="col-lg-12 mt-5">
+          <form id="myForm">
+            <small class="text-white">
+              " Vær Så Snill , Gi Meg Svaret Ditt Med Enten Ja Eller Nei Hvis Du
+              Vil Lære Norsk "
+            </small>
+            <textarea
+              name="answer"
+              id="answer"
+              cols="30"
+              rows="3"
+              class="form-control btn-ali text-white"
+            ></textarea>
+            <br />
+            <div class="d-grid gap-2 mt-3">
+              <button type="submit" class="btn btn-outline-warning button-ali">
+                svar på spørsmålene
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <br />
+      <footer class="m-5 pt-5 text-white fw-light opacity-25">
+        <small> &copy; alialrubay499@gmail.com , 2023</small>
+      </footer>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+
+    <!----===========================================================================----->
+    <script>
+      const myForm = document.getElementById("myForm");
+      const input = document.getElementById("answer");
+      const ask = document.getElementById("ask");
+
+      myForm.addEventListener("submit", async () => {
+        const answervalue = input.value;
+        const askvalue = ask.innerText;
+        try {
+          if (answervalue == "") {
+            alert("pleas fill the input !");
+            return;
+          } else {
+            const requestOptions = {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                answervalue: answervalue,
+                askvalue: askvalue,
+              }),
+            };
+
+            fetch("/data", requestOptions)
+              .then((response) => response.json())
+              .then((data) => console.log(data))
+              .catch((error) => console.error(error));
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      });
+    </script>
+    <!----===========================================================================----->
+    <script>
+      function reloadPage() {
+        window.location.reload();
+      }
+    </script>
+  </body>
+</html>
